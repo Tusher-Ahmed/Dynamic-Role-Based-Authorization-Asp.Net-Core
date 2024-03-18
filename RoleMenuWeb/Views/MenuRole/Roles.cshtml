@@ -1,0 +1,34 @@
+﻿@model List<RoleMenuWeb.ViewModel.RoleViewModel>
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="row pb-4">
+    <div class="col-6">
+        <h4>Roles</h4>
+    </div>
+    <div class="col-6 text-end">
+        <a asp-action="CreateRole" asp-controller="MenuRole" class="btn btn-primary">Create Role</a>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td><a asp-action="EditRolePermission" asp-controller="MenuRole" asp-route-id="@item.Id">Edit Permissions</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model List<RoleMenuWeb.ViewModel.NavigationMenuViewModel>
+
+<h4 class="pb-3">Add Method to Menu List</h4>
+<form method="post" action="@Url.Action("Methods", "MenuRole")">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>sl</th>
+                <th>Controller Name</th>
+                <th>Action Name</th>
+                <th>Is Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.ControllerName</td>
+                    <td>@item.ActionName</td>
+                    <td>@(item.Permitted == true ? "Yes":"No")</td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Save All</button>
+</form>
